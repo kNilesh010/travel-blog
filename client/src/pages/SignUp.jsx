@@ -1,6 +1,7 @@
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import OAuth from "../components/OAuth";
 export default function SignUp() {
   const [formData, setFormData] = useState({});
   const [errorMessage, setErrorMessage] = useState(null);
@@ -8,7 +9,6 @@ export default function SignUp() {
   const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
-    console.log(formData);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,7 +32,6 @@ export default function SignUp() {
         navigate("/signin");
       }
     } catch (error) {
-      console.log(error);
       setErrorMessage(error.errorMessage);
       setLoading(false);
     }
@@ -91,6 +90,7 @@ export default function SignUp() {
                 "SignUp"
               )}
             </Button>
+            <OAuth />
           </form>
           <div className="gap-2 flex text-sm mt-5">
             <span>Have an account?</span>
